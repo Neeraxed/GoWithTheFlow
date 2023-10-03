@@ -1,6 +1,6 @@
 # This .gitignore file should be placed at the root of your Unity project directory
 #
-# Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
+# Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 /[Ll]ibrary/
 /[Tt]emp/
@@ -14,8 +14,8 @@
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
 
-# Recordings can get excessive in size
-/[Rr]ecordings/
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -25,6 +25,9 @@
 
 # Visual Studio cache directory
 .vs/
+
+# JetBrains Cache directory
+.idea/
 
 # Gradle cache directory
 .gradle/
@@ -59,7 +62,6 @@ sysinfo.txt
 *.apk
 *.aab
 *.unitypackage
-*.app
 
 # Crashlytics generated file
 crashlytics-build.properties
@@ -70,3 +72,101 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/App
+/position.json
+/AppWeb
+/App
+/AppDesktop
+/Assets/SkySerie Freebie/UnearthlyRed.mat.meta
+/Assets/SkySerie Freebie/6SidedMegaSun.mat
+/Assets/SkySerie Freebie/6SidedMegaSun.mat.meta
+/Assets/SkySerie Freebie/AmbienceExposure.mat
+/Assets/SkySerie Freebie/AmbienceExposure.mat.meta
+/Assets/SkySerie Freebie/CasualDay.mat
+/Assets/SkySerie Freebie/CasualDay.mat.meta
+/Assets/SkySerie Freebie/CloudedSunGlow.mat
+/Assets/SkySerie Freebie/CloudedSunGlow.mat.meta
+/Assets/SkySerie Freebie/Cloudymorning.mat
+/Assets/SkySerie Freebie/Cloudymorning.mat.meta
+/Assets/SkySerie Freebie/CoriolisNight4k.mat
+/Assets/SkySerie Freebie/CoriolisNight4k.mat.meta
+/Assets/SkySerie Freebie/CosmicCoolCloud.mat
+/Assets/SkySerie Freebie/CosmicCoolCloud.mat.meta
+/Assets/SkySerie Freebie/DarkStorm.mat
+/Assets/SkySerie Freebie/DarkStorm.mat.meta
+/Assets/SkySerie Freebie/DayInTheClouds.mat
+/Assets/SkySerie Freebie/DayInTheClouds.mat.meta
+/Assets/SkySerie Freebie/ExampleScenes.meta
+/Assets/SkySerie Freebie/FluffballDay.mat
+/Assets/SkySerie Freebie/FluffballDay.mat.meta
+/Assets/SkySerie Freebie/FreebieHdri.meta
+/Assets/SkySerie Freebie/Hdri setup.txt
+/Assets/SkySerie Freebie/Hdri setup.txt.meta
+/Assets/SkySerie Freebie/HighFantasy.mat
+/Assets/SkySerie Freebie/HighFantasy.mat.meta
+/Assets/SkySerie Freebie/MegaSun.mat
+/Assets/SkySerie Freebie/MegaSun.mat.meta
+/Assets/SkySerie Freebie/PlanetaryEarth.mat
+/Assets/SkySerie Freebie/PlanetaryEarth.mat.meta
+/Assets/SkySerie Freebie/SkyhighFluffycloudField.mat
+/Assets/SkySerie Freebie/SkyhighFluffycloudField.mat.meta
+/Assets/SkySerie Freebie/SunlessCirruscover.mat
+/Assets/SkySerie Freebie/SunlessCirruscover.mat.meta
+/Assets/SkySerie Freebie/UnderTheSea4k.mat
+/Assets/SkySerie Freebie/UnderTheSea4k.mat.meta
+/Assets/SkySerie Freebie/UnearthlyRed.mat
+/Assets/SkySerie Freebie/ExampleScenes
+/Assets/SkySerie Freebie/FreebieHdri/AmbienceExposure4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/AmbienceExposure4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CasualDay4K.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CasualDay4K.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CloudedSunGlow4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CloudedSunGlow4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/Cloudymorning4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/Cloudymorning4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CoriolisNight4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CoriolisNight4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBack.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBack.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBottom.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudBottom.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudFront.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudFront.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudLeft.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudLeft.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudRight.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudRight.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudTop.hdr
+/Assets/SkySerie Freebie/FreebieHdri/CosmicCoolCloudTop.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/DarkStorm4K.hdr
+/Assets/SkySerie Freebie/FreebieHdri/DarkStorm4K.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/DayInTheClouds4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/DayInTheClouds4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/UnearthlyRed4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/HighFantasy4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/HighFantasy4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/MegaSun4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/MegaSun4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunBack.hdr
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunBack.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunBottom.hdr
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunBottom.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunFront.hdr
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunFront.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunLeft.hdr
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunLeft.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunRight.hdr
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunRight.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunTop.hdr
+/Assets/SkySerie Freebie/FreebieHdri/MegaSunTop.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/PlanetaryEarth4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/SkyhighFluffycloudField4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/SkyhighFluffycloudField4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/SunlessCirruscover4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/SunlessCirruscover4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/UnderTheSea4k.hdr
+/Assets/SkySerie Freebie/FreebieHdri/UnderTheSea4k.hdr.meta
+/Assets/SkySerie Freebie/FreebieHdri/UnearthlyRed4k.hdr
+/configurations.txt
+/models
