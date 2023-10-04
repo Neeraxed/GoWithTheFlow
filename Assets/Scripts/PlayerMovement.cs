@@ -23,10 +23,17 @@ public class PlayerMovement : MonoBehaviour
         inputManager.OnEndTouch -= Move;
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("Entered collision with " + hit.gameObject.name);
+        Die();
+    }
+
     private void Update()
     {
         cc.Move(transform.forward * speedMultiplier);
     }
+
 
     public void Move(Vector2 screenPosition, float time)
     {
@@ -39,4 +46,16 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(negativeRotation);
         }
     }
+
+    private void Die()
+    {
+        gameObject.SetActive(false);
+    }
+
+    //public void WarpToPosition(Vector3 newPosition)
+    //{
+    //    cc.enabled = false;
+    //    transform.position = newPosition;
+    //    cc.enabled = true;
+    //}
 }
