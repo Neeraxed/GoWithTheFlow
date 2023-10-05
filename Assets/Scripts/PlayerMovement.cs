@@ -1,9 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speedMultiplier;
     [SerializeField] private InputManager inputManager;
+    [SerializeField] private TextMeshProUGUI finishText;
+
 
     private Vector3 positiveRotation = new Vector3(0, 90, 0);
     private Vector3 negativeRotation = new Vector3(0, -90, 0);
@@ -26,7 +30,14 @@ public class PlayerMovement : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.Log("Entered collision with " + hit.gameObject.name);
-        Die();
+
+        if(hit.gameObject.CompareTag("Finish"))
+        {
+            finishText.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+            Die();
     }
 
     private void Update()
