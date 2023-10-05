@@ -16,11 +16,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        inputManager.OnStartTouch += Move;
+        inputManager.OnStartTouch += Rotate;
     }
     private void OnDisable()
     {
-        inputManager.OnEndTouch -= Move;
+        inputManager.OnEndTouch -= Rotate;
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -31,11 +31,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Physics.SyncTransforms();
         cc.Move(transform.forward * speedMultiplier);
     }
 
-
-    public void Move(Vector2 screenPosition, float time)
+    public void Rotate(Vector2 screenPosition, float time)
     {
         if (screenPosition.x >  Screen.width * 0.67)
         {
@@ -51,11 +51,4 @@ public class PlayerMovement : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-    //public void WarpToPosition(Vector3 newPosition)
-    //{
-    //    cc.enabled = false;
-    //    transform.position = newPosition;
-    //    cc.enabled = true;
-    //}
 }
