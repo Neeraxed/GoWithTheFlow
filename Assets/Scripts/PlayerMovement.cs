@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -44,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Physics.SyncTransforms();
         cc.Move(transform.forward * speedMultiplier);
+
+        if(Input.GetKeyDown(KeyCode.A))
+            transform.Rotate(negativeRotation);
+        else if(Input.GetKeyDown(KeyCode.D))
+            transform.Rotate(positiveRotation);
     }
 
     public void Rotate(Vector2 screenPosition, float time)
@@ -52,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Rotate(positiveRotation);
         }
-        else if (screenPosition.x < Screen.width * 0.33)
+        else if (screenPosition.x < Screen.width * 0.33 )
         {
             transform.Rotate(negativeRotation);
         }
@@ -61,5 +67,6 @@ public class PlayerMovement : MonoBehaviour
     private void Die()
     {
         gameObject.SetActive(false);
+        SceneManager.LoadScene(0);
     }
 }
