@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Physics.SyncTransforms();
-        cc.Move(transform.forward * speedMultiplier);
+        cc.Move(transform.forward * speedMultiplier * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.A))
             transform.Rotate(negativeRotation);
