@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI finishText;
     [SerializeField] private TextMeshProUGUI collectedAmount;
+
+    public UnityEvent reachedTileEnd;
 
     private void Awake()
     {
@@ -17,6 +20,14 @@ public class PlayerBehaviour : MonoBehaviour
     public void ChangeCollectedAmount()
     {
         collectedAmount.text = "Souls collected: " + CollectedAmount.ToString();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("TileBound"))
+        {
+            reachedTileEnd?.Invoke();
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -29,7 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             finishText.gameObject.SetActive(true);
             Time.timeScale = 0;
-        }            
+        }
     }
 
     private void Die()

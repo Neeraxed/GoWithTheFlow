@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {  
-    [SerializeField] private float speedMultiplier;
+    [SerializeField] private float playerSpeed;
+    [SerializeField] private float maximumPlayerSpeed;
+    [SerializeField] private float playerSpeedIncreaseRate;
     [SerializeField] private InputManager inputManager;
 
     private Vector3 positiveRotation = new Vector3(0, 90, 0);
@@ -17,7 +19,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Physics.SyncTransforms();
-        cc.Move(transform.forward * speedMultiplier * Time.deltaTime);
+        cc.Move(transform.forward * playerSpeed * Time.deltaTime);
+        
+        if(playerSpeed < maximumPlayerSpeed)
+        {
+            playerSpeed += Time.deltaTime * playerSpeedIncreaseRate;
+        }
 
         if (Input.GetKeyDown(KeyCode.A))
             transform.Rotate(negativeRotation);
