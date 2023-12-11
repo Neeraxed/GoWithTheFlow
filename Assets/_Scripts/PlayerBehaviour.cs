@@ -24,7 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("TileBound"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("TileBound") && other.transform.position.z > transform.position.z)
         {
             reachedTileEnd?.Invoke();
         }
