@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,19 +10,24 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI finishText;
     [SerializeField] private TextMeshProUGUI collectedAmount;
+    [SerializeField] private TextMeshProUGUI highScore;
 
     public UnityEvent reachedTileEnd;
 
-    private void Awake()
-    {
-        CollectableMan.CollectedAmountChanged += ChangeCollectedAmount;
-    }
-
     public void ChangeCollectedAmount()
     {
-        collectedAmount.text = "Souls collected: " + CollectedAmount.ToString();
+        collectedAmount.text = "Частиц собрано: " + CollectedAmount;
+        CheckHighScore();
     }
-
+    private void OnEnable()
+    {
+        UpdateHighScore();
+        CollectableMan.CollectedAmountChanged += ChangeCollectedAmount;
+    }
+    private void OnDisable()
+    {
+        CollectableMan.CollectedAmountChanged -= ChangeCollectedAmount;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("TileBound") && other.transform.position.z > transform.position.z)
@@ -29,7 +35,6 @@ public class PlayerBehaviour : MonoBehaviour
             reachedTileEnd?.Invoke();
         }
     }
-
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.Log("Entered collision with " + hit.gameObject.name);
@@ -50,7 +55,15 @@ public class PlayerBehaviour : MonoBehaviour
         //TODO restart screen + адекватный сброс CollectedAmount
 
         CollectedAmount = 0;
-
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    private void CheckHighScore()
+    {
+        if (CollectedAmount > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", CollectedAmount);
+            UpdateHighScore();
+        }
+    }
+    private void UpdateHighScore() => highScore.text = "Рекорд: " + PlayerPrefs.GetInt("HighScore", 0);
 }
