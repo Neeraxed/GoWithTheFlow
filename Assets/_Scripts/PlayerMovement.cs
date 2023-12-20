@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {  
-    [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerSpeed = 7f;
     [SerializeField] private float maximumPlayerSpeed;
     [SerializeField] private float playerSpeedIncreaseRate;
     [SerializeField] private InputManager inputManager;
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
+        inputManager.OnStartTouch += Rotate;
     }
 
     private void Update()
@@ -32,14 +33,14 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(positiveRotation);
     }
 
-    private void OnEnable()
-    {
-        inputManager.OnStartTouch += Rotate;
-    }
-    private void OnDisable()
-    {
-        inputManager.OnEndTouch -= Rotate;
-    }
+    // private void OnEnable()
+    // {
+    //     inputManager.OnStartTouch += Rotate;
+    // }
+    // private void OnDisable()
+    // {
+    //     inputManager.OnEndTouch -= Rotate;
+    // }
 
     public void Rotate(Vector2 screenPosition, float time)
     {

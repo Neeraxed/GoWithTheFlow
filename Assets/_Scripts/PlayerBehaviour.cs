@@ -15,6 +15,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private GameObject restartScreen;
     [SerializeField] private GameObject renderedParts;
     [SerializeField] private float timeOfVulnerability;
+    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private PlayerMovement playerMovement;
     
     private bool isInvulnerable = false;
 
@@ -66,6 +68,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Debug.Log("RestartScene");
         restartScreen.SetActive(false);
+        playerMovement.enabled = true;
         CollectedAmount = 0;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -75,17 +78,30 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Debug.Log("ContinueScene");
         restartScreen.SetActive(false);
-        Time.timeScale = 1f;
+        playerMovement.enabled = true;
+        Time.timeScale = 0.7f;
         isInvulnerable = true;
+        //transform.localPosition += Vector3.back * 3f;
         StartCoroutine(BecomeVulnerable());
         StartCoroutine(Blink());
+        StartCoroutine(SetTimeScaleToNormal());
     }
 
     private IEnumerator BecomeVulnerable()
     {
         yield return new WaitForSeconds(timeOfVulnerability);
         isInvulnerable = false;
+    }       
+    private IEnumerator SetTimeScaleToNormal()
+    {
+        while (Time.timeScale < 1f)
+        {
+            yield return new WaitForSeconds(timeOfVulnerability);
+            Time.timeScale += 0.2f;
+            Debug.Log(Time.timeScale);
+        }
     }   
+    
     private IEnumerator Blink()
     {
         for (int i = 0; i < timeOfVulnerability * 5f; i++)
@@ -93,15 +109,14 @@ public class PlayerBehaviour : MonoBehaviour
             renderedParts.SetActive((!renderedParts.activeSelf));
             yield return new WaitForSeconds(0.2f);
         }
-
         renderedParts.SetActive(true);
     }
 
     private void Die()
     {
         //TODO shaking screen + particle system
-        //gameObject.SetActive(false);
-        Time.timeScale = 0f;
+        particleSystem.Emit(150);
+        playerMovement.enabled = false;
         restartScreen.SetActive(true);
     }
     private void CheckHighScore()
