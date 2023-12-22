@@ -20,7 +20,7 @@ public class CollectableMan : MonoBehaviour
         if (hits > 0)
         {
             var pointToCollect = pointToCollectCollidersBuffer[0].GetComponent<PointToCollect>();
-            pointToCollect.Collect(ref PlayerBehaviour.CollectedAmount);
+            pointToCollect.Collect(ref GameManager.CollectedAmount);
             CollectedAmountChanged?.Invoke();
         }
     }

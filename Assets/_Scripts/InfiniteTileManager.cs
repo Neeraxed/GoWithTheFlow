@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class InfiniteTileManager : MonoBehaviour
 {
@@ -22,10 +24,19 @@ public class InfiniteTileManager : MonoBehaviour
         {
             SpawnTile();
         }
-
+    }
+    private void OnEnable()
+    {
         playerBehaviour.reachedTileEnd.AddListener(DeleteTile);
         playerBehaviour.reachedTileEnd.AddListener(SpawnTile);
     }
+
+    private void OnDisable()
+    {
+        playerBehaviour.reachedTileEnd.RemoveListener(DeleteTile);
+        playerBehaviour.reachedTileEnd.RemoveListener(SpawnTile);
+    }
+
 
     private void Update()
     {
