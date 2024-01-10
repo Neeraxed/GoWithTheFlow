@@ -32,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.D))
             transform.Rotate(positiveRotation);
     }
+    private void OnDestroy()
+    {
+        inputManager.OnEndTouch -= Rotate;
+    }
 
     // private void OnEnable()
     // {
