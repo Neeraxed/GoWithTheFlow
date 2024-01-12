@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-1)]
 public class InputManager : MonoBehaviour
 {
     public delegate void StartTouchEvent(Vector2 position, float time);
@@ -17,6 +18,7 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("touch controls enabled");
         touchControls.Enable();
     }
     private void OnDisable()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,10 +12,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 negativeRotation = new Vector3(0, -90, 0);
     private CharacterController cc;
 
+    private void OnEnable()
+    {
+        inputManager.OnStartTouch += Rotate;
+    }
+
+    private void OnDisable()
+    {
+        inputManager.OnEndTouch -= Rotate;
+    }
+
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
-        inputManager.OnStartTouch += Rotate;
+        //inputManager.OnStartTouch += Rotate;
     }
 
     private void Update()
@@ -34,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDestroy()
     {
-        inputManager.OnEndTouch -= Rotate;
+       // inputManager.OnEndTouch -= Rotate;
     }
 
     // private void OnEnable()

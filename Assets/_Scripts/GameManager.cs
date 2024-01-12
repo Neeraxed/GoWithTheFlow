@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(timeOfVulnerability);
             Time.timeScale += 0.2f;
-            Debug.Log(Time.timeScale);
         }
     }
 
