@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using YG;
 public class GameManager : MonoBehaviour
 {
     public static int CollectedAmount;
@@ -17,7 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerBehaviour playerBehaviour;
     [SerializeField] private TextMeshProUGUI finishText;
     [SerializeField] private TextMeshProUGUI highScore;
-
+    private const string YandexLeaderBoardName = "Score";
+    
     public void RestartScene()
     {
         Debug.Log("RestartScene");
@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
     public void ContinueScene()
     {
         Debug.Log("ContinueScene");
@@ -53,7 +52,6 @@ public class GameManager : MonoBehaviour
         playerBehaviour.PlayerDied.RemoveListener(PlayerDied);
         playerBehaviour.ReachedFinish.RemoveListener(PlayerReachedFinish);
     }
-
     private IEnumerator BecomeVulnerable()
     {
         yield return new WaitForSeconds(timeOfVulnerability);
@@ -76,7 +74,6 @@ public class GameManager : MonoBehaviour
             renderedParts.SetActive((!renderedParts.activeSelf));
             yield return new WaitForSeconds(0.2f);
         }
-
         renderedParts.SetActive(true);
     }
 
@@ -104,9 +101,9 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", CollectedAmount);
             UpdateHighScore();
+            YandexGame.NewLeaderboardScores(YandexLeaderBoardName,CollectedAmount);
         }
     }
     
     private void UpdateHighScore() => highScore.text = "Рекорд: " + PlayerPrefs.GetInt("HighScore", 0);
-
 }
