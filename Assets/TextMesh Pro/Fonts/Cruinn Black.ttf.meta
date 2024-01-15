@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 363d555379514a54b9bfb33f73badf9d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cruinn
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 11af05ac93f7d4945bd39f1019abb302, type: 3}
+  - {fileID: 12800000, guid: f09f6c5ef21f6b0408b3ec622e8eab19, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
