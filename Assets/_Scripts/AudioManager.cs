@@ -17,4 +17,9 @@ public class AudioManager : MonoBehaviour
                 break;
         }
     }
+    
+    public void StopPlayEverything()
+    {
+        AudioListener.pause = !AudioListener.pause;
+    }
 }

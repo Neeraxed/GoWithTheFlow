@@ -22,8 +22,4 @@ public class MenuManager : MonoBehaviour
     {
         gameObject.SetActive(!gameObject.activeSelf);
     }
-    public void SoundTurnOnOff()
-    {
-        AudioListener.pause = !AudioListener.pause;
-    }
 }
