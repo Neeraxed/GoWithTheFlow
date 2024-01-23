@@ -467,6 +467,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6574283432859548111, guid: e8c48744f42fecd4499589436b4cc04d, type: 3}
+      propertyPath: en
+      value: 'Score:'
+      objectReference: {fileID: 0}
     - target: {fileID: 6763838233722772521, guid: e8c48744f42fecd4499589436b4cc04d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
