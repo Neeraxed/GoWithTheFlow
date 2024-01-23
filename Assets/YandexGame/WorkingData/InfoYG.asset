@@ -182,7 +182,7 @@ MonoBehaviour:
       score: 10
   LocalizationEnable: 1
   callingLanguageCheck: 0
-  translateMethod: 0
+  translateMethod: 1
   domainAutoLocalization: com
   CSVFileTranslate:
     format: 0
@@ -216,7 +216,8 @@ MonoBehaviour:
     de: 0
     hi: 0
   fonts:
-    defaultFont: []
+    defaultFont:
+    - {fileID: 12800000, guid: b9807c30efeab334fa380e7a05b383bb, type: 3}
     ru: []
     en: []
     tr: []
@@ -245,7 +246,8 @@ MonoBehaviour:
     de: []
     hi: []
   fontsTMP:
-    defaultFont: []
+    defaultFont:
+    - {fileID: 11400000, guid: 7355b3838c20f9343a4b69360ddcc416, type: 2}
     ru: []
     en: []
     tr: []
