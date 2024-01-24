@@ -4939,15 +4939,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e243b6a6fba7654ba2b5331f686bc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishText: {fileID: 0}
-  collectedAmount: {fileID: 0}
-  highScore: {fileID: 0}
-  restartScreen: {fileID: 0}
-  renderedParts: {fileID: 0}
-  timeOfVulnerability: 0
-  particleSystem: {fileID: 0}
-  playerMovement: {fileID: 0}
+  isInvulnerable: 0
   reachedTileEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayerDied:
+    m_PersistentCalls:
+      m_Calls: []
+  ReachedFinish:
     m_PersistentCalls:
       m_Calls: []
 --- !u!143 &1464374285812374364
@@ -24424,8 +24423,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.95595586, g: 0.8820755, b: 1, a: 1}
-  m_Intensity: 30
-  m_Range: 17.837238
+  m_Intensity: 10
+  m_Range: 18
   m_SpotAngle: 160.3668
   m_InnerSpotAngle: 26.886425
   m_CookieSize: 10

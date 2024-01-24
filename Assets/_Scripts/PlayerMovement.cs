@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         //inputManager.OnStartTouch += Rotate;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Physics.SyncTransforms();
         cc.Move(transform.forward * playerSpeed * Time.deltaTime);
@@ -26,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
         {
             playerSpeed += Time.deltaTime * playerSpeedIncreaseRate;
         }
+    }
 
+    private void Update()
+    {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             transform.Rotate(negativeRotation);
         else if (Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow))
