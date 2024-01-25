@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class TeleportableMan : MonoBehaviour
@@ -6,10 +8,10 @@ public class TeleportableMan : MonoBehaviour
     public float portalActivationRadius = 2f;
     private Collider[] portalCollidersBuffer = new Collider[1];
 
-    void Update()
-    {
-        DetectPortal();
-    }
+    // void Update()
+    // {
+    //     DetectPortal();
+    // }
 
     private void DetectPortal()
     {
@@ -28,5 +30,15 @@ public class TeleportableMan : MonoBehaviour
         {
             AlreadyTeleported = false;
         }
+    }
+
+    private void OnEnable()
+    {
+        Portal.PortalTriggered += DetectPortal;
+    }
+
+    private void OnDisable()
+    {
+        Portal.PortalTriggered -= DetectPortal;
     }
 }

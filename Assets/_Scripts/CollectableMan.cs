@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class CollectableMan : MonoBehaviour
 {
-    public float pointToCollectActivationRadius = 2f;
+    public float pointToCollectActivationRadius = 3f;
     public static event Action CollectedAmountChanged;
 
     private Collider[] pointToCollectCollidersBuffer = new Collider[1];
 
-    void Update()
-    {
-        DetectPointToCollect();
-    }
-
+    // void Update()
+    // {
+    //     DetectPointToCollect();
+    // }
+    
     public void DetectPointToCollect()
     {
         var hits = Physics.OverlapSphereNonAlloc(this.transform.position, pointToCollectActivationRadius, pointToCollectCollidersBuffer, 1 << PointToCollect.PointToCollectLayer);
@@ -23,5 +23,14 @@ public class CollectableMan : MonoBehaviour
             pointToCollect.Collect(ref GameManager.CollectedAmount);
             CollectedAmountChanged?.Invoke();
         }
+    }
+
+    private void OnEnable()
+    { 
+        PointToCollect.PointToCollectTriggered += DetectPointToCollect;
+    }
+    private void OnDisable()
+    { 
+        PointToCollect.PointToCollectTriggered -= DetectPointToCollect;
     }
 }

@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Physics.SyncTransforms();
         cc.Move(transform.forward * playerSpeed * Time.deltaTime);
-
         if (playerSpeed < maximumPlayerSpeed)
         {
             playerSpeed += Time.deltaTime * playerSpeedIncreaseRate;
@@ -35,11 +34,6 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(negativeRotation);
         else if (Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow))
             transform.Rotate(positiveRotation);
-    }
-
-    private void OnDestroy()
-    {
-        //inputManager.OnEndTouch -= Rotate;
     }
 
     // private void OnEnable()

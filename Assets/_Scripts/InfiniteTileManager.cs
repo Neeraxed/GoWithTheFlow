@@ -36,19 +36,6 @@ public class InfiniteTileManager : MonoBehaviour
         playerBehaviour.reachedTileEnd.RemoveListener(SpawnTile);
     }
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            SpawnTile();
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            SpawnTile();
-        }
-    }
     private void SpawnTile()
     {
         prevTile = Instantiate(SelectRandomGameobject(tiles), currentTileLocation, Quaternion.identity);
