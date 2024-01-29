@@ -1,21 +1,21 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using YG;
 public class GameManager : MonoBehaviour
 {
     public static int CollectedAmount;
 
-    [SerializeField] private TextMeshProUGUI collectedAmount;
+    [SerializeField] private Text collectedAmount;
     [SerializeField] private GameObject restartScreen;
     [SerializeField] private GameObject renderedParts;
     [SerializeField] private float timeOfVulnerability;
     [SerializeField] private ParticleSystem explosionPaticleSystem;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerBehaviour playerBehaviour;
-    [SerializeField] private TextMeshProUGUI finishText;
-    [SerializeField] private TextMeshProUGUI highScore;
+    [SerializeField] private GameObject finishText;
+    [SerializeField] private Text highScore;
     private const string YandexLeaderBoardName = "Score";
     
     public void RestartScene()

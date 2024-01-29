@@ -1,2 +1,2 @@
-Build path: D:/Getown/Programes/Unity projects/Builds/GoWithTheFlow
-Build number: 145
+Build path: D:/Unity/Release/PluginYG/PluginYG
+Build number: 141
