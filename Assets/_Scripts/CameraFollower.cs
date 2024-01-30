@@ -11,7 +11,7 @@ public class CameraFollower : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 targetPosition = followingObject.TransformPoint(new Vector3(0, 1.5f, -1.5f));
+        Vector3 targetPosition = followingObject.TransformPoint(new Vector3(0, 1f, -3f));
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         transform.LookAt(followingObject);
     }

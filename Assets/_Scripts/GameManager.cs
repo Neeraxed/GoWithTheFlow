@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     private void ChangeCollectedAmount()
     {
-        collectedAmount.text = "Частиц собрано: " + CollectedAmount;
+        collectedAmount.text = CollectedAmount.ToString();
         CheckHighScore();
     }
 
@@ -105,5 +105,5 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    private void UpdateHighScore() => highScore.text = "Рекорд: " + PlayerPrefs.GetInt("HighScore", 0);
+    private void UpdateHighScore() => highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
 }
