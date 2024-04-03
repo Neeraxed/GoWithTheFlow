@@ -1,11 +1,10 @@
 using UnityEngine;
-using System.Collections;
 
 public class CameraFollower : MonoBehaviour
 {
-    [SerializeField] private Transform followingObject;
-
     public float smoothTime = 0.3F;
+
+    [SerializeField] private Transform followingObject;
 
     private Vector3 velocity = Vector3.zero;
 

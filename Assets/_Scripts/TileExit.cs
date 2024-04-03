@@ -9,7 +9,6 @@ public class TileExit : MonoBehaviour
     {
         Debug.Log("OnTriggerEnter tileExit");
         tm.SpawnTile();
-        //pm.Rotate(Vector2.left, 0.1f);
         pm.gameObject.transform.position = Vector3.zero;
         pm.gameObject.transform.rotation = Quaternion.identity;
 

@@ -6,11 +6,6 @@ public class TeleportableMan : MonoBehaviour
     public float portalActivationRadius = 2f;
     private Collider[] portalCollidersBuffer = new Collider[1];
 
-    // void Update()
-    // {
-    //     DetectPortal();
-    // }
-
     private void DetectPortal()
     {
         var hits = Physics.OverlapSphereNonAlloc(this.transform.position, portalActivationRadius, portalCollidersBuffer, 1 << Portal.PortalLayer);

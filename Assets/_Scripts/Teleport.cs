@@ -14,7 +14,6 @@ public class Teleport : MonoBehaviour
         {
             cc.enabled = false;
             cc.gameObject.transform.localPosition = targetTransform.localPosition;
-            //cc.gameObject.transform.localRotation = targetTransform.localRotation;
             canTeleport = false;
             StartCoroutine(PauseBetweenTeleportations(teleportationTimer));
             cc.enabled = true;

@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject finishText;
     [SerializeField] private Text highScore;
     private const string YandexLeaderBoardName = "Score";
-    
+
     public void RestartScene()
     {
         Debug.Log("RestartScene");
@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         playerMovement.enabled = true;
         Time.timeScale = 0.7f;
         playerBehaviour.isInvulnerable = true;
-        //transform.localPosition += Vector3.back * 3f;
         StartCoroutine(BecomeVulnerable());
         StartCoroutine(Blink());
         StartCoroutine(SetTimeScaleToNormal());
@@ -101,9 +100,9 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", CollectedAmount);
             UpdateHighScore();
-            YandexGame.NewLeaderboardScores(YandexLeaderBoardName,CollectedAmount);
+            YandexGame.NewLeaderboardScores(YandexLeaderBoardName, CollectedAmount);
         }
     }
-    
+
     private void UpdateHighScore() => highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
 }

@@ -8,11 +8,6 @@ public class CollectableMan : MonoBehaviour
 
     private Collider[] pointToCollectCollidersBuffer = new Collider[1];
 
-    // void Update()
-    // {
-    //     DetectPointToCollect();
-    // }
-    
     public void DetectPointToCollect()
     {
         var hits = Physics.OverlapSphereNonAlloc(this.transform.position, pointToCollectActivationRadius, pointToCollectCollidersBuffer, 1 << PointToCollect.PointToCollectLayer);

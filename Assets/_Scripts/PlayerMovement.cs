@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
-        //inputManager.OnStartTouch += Rotate;
     }
 
     private void FixedUpdate()
@@ -32,18 +30,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             transform.Rotate(negativeRotation);
-        else if (Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             transform.Rotate(positiveRotation);
     }
-
-    // private void OnEnable()
-    // {
-    //     inputManager.OnStartTouch += Rotate;
-    // }
-    // private void OnDisable()
-    // {
-    //     inputManager.OnEndTouch -= Rotate;
-    // }
 
     public void Rotate(Vector2 screenPosition, float time)
     {

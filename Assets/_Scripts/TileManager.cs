@@ -32,6 +32,4 @@ public class TileManager : MonoBehaviour
         currentTile = groundTiles[Random.Range(0, groundTiles.Length)];
         currentTile.SetActive(true);
     }
-
-
 }
