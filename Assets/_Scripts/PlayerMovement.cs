@@ -3,68 +3,60 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed = 7f;
-    [SerializeField] private float maximumPlayerSpeed;
-    [SerializeField] private float playerSpeedIncreaseRate;
-    [SerializeField] private InputManager inputManager;
+    [SerializeField] private float _playerSpeed = 7f;
+    [SerializeField] private float _maximumPlayerSpeed;
+    [SerializeField] private float _playerSpeedIncreaseRate;
+    [SerializeField] private InputManager _inputManager;
 
-    private Vector3 positiveRotation = new Vector3(0, 90, 0);
-    private Vector3 negativeRotation = new Vector3(0, -90, 0);
+    private Vector3 _positiveRotation = new Vector3(0, 90, 0);
+    private Vector3 _negativeRotation = new Vector3(0, -90, 0);
     private CharacterController cc;
+
+    public void Rotate(Vector2 screenPosition, float time)
+    {
+        if (screenPosition.x > Screen.width * 0.67)
+        {
+            transform.Rotate(_positiveRotation);
+        }
+        else if (screenPosition.x < Screen.width * 0.33)
+        {
+            transform.Rotate(_negativeRotation);
+        }
+    }
+
+    public void Rotate(bool positiveRot)
+    {
+        if (positiveRot)
+        {
+            transform.Rotate(_positiveRotation);
+        }
+        else
+        {
+            transform.Rotate(_negativeRotation);
+        }
+
+    }
 
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
-        //inputManager.OnStartTouch += Rotate;
     }
 
     private void FixedUpdate()
     {
         Physics.SyncTransforms();
-        cc.Move(transform.forward * playerSpeed * Time.deltaTime);
-        if (playerSpeed < maximumPlayerSpeed)
+        cc.Move(transform.forward * _playerSpeed * Time.deltaTime);
+        if (_playerSpeed < _maximumPlayerSpeed)
         {
-            playerSpeed += Time.deltaTime * playerSpeedIncreaseRate;
+            _playerSpeed += Time.deltaTime * _playerSpeedIncreaseRate;
         }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            transform.Rotate(negativeRotation);
+            transform.Rotate(_negativeRotation);
         else if (Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow))
-            transform.Rotate(positiveRotation);
-    }
-
-    // private void OnEnable()
-    // {
-    //     inputManager.OnStartTouch += Rotate;
-    // }
-    // private void OnDisable()
-    // {
-    //     inputManager.OnEndTouch -= Rotate;
-    // }
-
-    public void Rotate(Vector2 screenPosition, float time)
-    {
-        if (screenPosition.x > Screen.width * 0.67)
-        {
-            transform.Rotate(positiveRotation);
-        }
-        else if (screenPosition.x < Screen.width * 0.33)
-        {
-            transform.Rotate(negativeRotation);
-        }
-    }
-    public void Rotate(bool positiveRot)
-    {
-        if (positiveRot)
-        {
-            transform.Rotate(positiveRotation);
-        }
-        else
-        {
-            transform.Rotate(negativeRotation);
-        }
+            transform.Rotate(_positiveRotation);
     }
 }

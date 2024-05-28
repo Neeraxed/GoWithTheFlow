@@ -3,19 +3,23 @@ using UnityEngine.Events;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public bool isInvulnerable = false;
-    public UnityEvent reachedTileEnd;
+    public UnityEvent ReachedTileEnd;
     public UnityEvent PlayerDied;
     public UnityEvent ReachedFinish;
+
+    private bool isInvulnerable = false;
+
+    public bool IsInvulnerable { get { return isInvulnerable; } set { isInvulnerable = value; } }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("TileBound") &&
             other.transform.position.z > transform.position.z)
         {
-            reachedTileEnd?.Invoke();
+            ReachedTileEnd?.Invoke();
         }
     }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (isInvulnerable) return;
@@ -30,6 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
     private void Die()
     {
         PlayerDied?.Invoke();

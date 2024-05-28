@@ -3,95 +3,100 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
+
 public class GameManager : MonoBehaviour
 {
     public static int CollectedAmount;
 
-    [SerializeField] private Text collectedAmount;
-    [SerializeField] private GameObject restartScreen;
-    [SerializeField] private GameObject renderedParts;
-    [SerializeField] private float timeOfVulnerability;
-    [SerializeField] private ParticleSystem explosionPaticleSystem;
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private PlayerBehaviour playerBehaviour;
-    [SerializeField] private GameObject finishText;
-    [SerializeField] private Text highScore;
-    private const string YandexLeaderBoardName = "Score";
+    [SerializeField] private Text _collectedAmount;
+    [SerializeField] private GameObject _restartScreen;
+    [SerializeField] private GameObject _renderedParts;
+    [SerializeField] private float _timeOfVulnerability;
+    [SerializeField] private ParticleSystem _explosionPaticleSystem;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerBehaviour _playerBehaviour;
+    [SerializeField] private GameObject _finishText;
+    [SerializeField] private Text _highScore;
+
+    private const string _YandexLeaderBoardName = "Score";
     
     public void RestartScene()
     {
         Debug.Log("RestartScene");
-        restartScreen.SetActive(false);
-        playerMovement.enabled = true;
+        _restartScreen.SetActive(false);
+        _playerMovement.enabled = true;
         CollectedAmount = 0;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void ContinueScene()
     {
         Debug.Log("ContinueScene");
-        restartScreen.SetActive(false);
-        playerMovement.enabled = true;
+        _restartScreen.SetActive(false);
+        _playerMovement.enabled = true;
         Time.timeScale = 0.7f;
-        playerBehaviour.isInvulnerable = true;
-        //transform.localPosition += Vector3.back * 3f;
+        _playerBehaviour.IsInvulnerable = true;
         StartCoroutine(BecomeVulnerable());
         StartCoroutine(Blink());
         StartCoroutine(SetTimeScaleToNormal());
     }
+
     private void OnEnable()
     {
         UpdateHighScore();
         CollectableMan.CollectedAmountChanged += ChangeCollectedAmount;
-        playerBehaviour.PlayerDied.AddListener(PlayerDied);
-        playerBehaviour.ReachedFinish.AddListener(PlayerReachedFinish);
+        _playerBehaviour.PlayerDied.AddListener(PlayerDied);
+        _playerBehaviour.ReachedFinish.AddListener(PlayerReachedFinish);
     }
+
     private void OnDisable()
     {
         CollectableMan.CollectedAmountChanged -= ChangeCollectedAmount;
-        playerBehaviour.PlayerDied.RemoveListener(PlayerDied);
-        playerBehaviour.ReachedFinish.RemoveListener(PlayerReachedFinish);
+        _playerBehaviour.PlayerDied.RemoveListener(PlayerDied);
+        _playerBehaviour.ReachedFinish.RemoveListener(PlayerReachedFinish);
     }
+
     private IEnumerator BecomeVulnerable()
     {
-        yield return new WaitForSeconds(timeOfVulnerability);
-        playerBehaviour.isInvulnerable = false;
+        yield return new WaitForSeconds(_timeOfVulnerability);
+        _playerBehaviour.IsInvulnerable = false;
     }
 
     private IEnumerator SetTimeScaleToNormal()
     {
         while (Time.timeScale < 1f)
         {
-            yield return new WaitForSeconds(timeOfVulnerability);
+            yield return new WaitForSeconds(_timeOfVulnerability);
             Time.timeScale += 0.2f;
         }
     }
 
     private IEnumerator Blink()
     {
-        for (int i = 0; i < timeOfVulnerability * 5f; i++)
+        for (int i = 0; i < _timeOfVulnerability * 5f; i++)
         {
-            renderedParts.SetActive((!renderedParts.activeSelf));
+            _renderedParts.SetActive((!_renderedParts.activeSelf));
             yield return new WaitForSeconds(0.2f);
         }
-        renderedParts.SetActive(true);
+        _renderedParts.SetActive(true);
     }
 
     private void PlayerDied()
     {
-        explosionPaticleSystem.Emit(1000);
-        playerMovement.enabled = false;
-        restartScreen.SetActive(true);
+        _explosionPaticleSystem.Emit(1000);
+        _playerMovement.enabled = false;
+        _restartScreen.SetActive(true);
     }
 
     private void PlayerReachedFinish()
     {
-        finishText.gameObject.SetActive(true);
+        _finishText.gameObject.SetActive(true);
     }
 
     private void ChangeCollectedAmount()
     {
-        collectedAmount.text = CollectedAmount.ToString();
+        _collectedAmount.text = CollectedAmount.ToString();
         CheckHighScore();
     }
 
@@ -101,9 +106,9 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", CollectedAmount);
             UpdateHighScore();
-            YandexGame.NewLeaderboardScores(YandexLeaderBoardName,CollectedAmount);
+            YandexGame.NewLeaderboardScores(_YandexLeaderBoardName,CollectedAmount);
         }
     }
     
-    private void UpdateHighScore() => highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+    private void UpdateHighScore() => _highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
 }

@@ -3,10 +3,10 @@ using YG;
 
 public class YGAdsProvider : MonoBehaviour
 {
-    public YandexGame sdk;
+    [SerializeField] private YandexGame _sdk;
 
     public void AdButton()
     {
-        sdk._RewardedShow(1);
+        _sdk._RewardedShow(1);
     }
 }

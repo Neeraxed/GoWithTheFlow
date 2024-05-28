@@ -21,6 +21,7 @@ public class InputManager : MonoBehaviour
         Debug.Log("touch controls enabled");
         touchControls.Enable();
     }
+
     private void OnDisable()
     {
         touchControls.Disable();

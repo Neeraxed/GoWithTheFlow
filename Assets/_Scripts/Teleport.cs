@@ -4,20 +4,20 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
     public static bool canTeleport = true;
-    [SerializeField] private CharacterController cc;
-    [SerializeField] private Transform targetTransform;
-    [SerializeField] private float teleportationTimer = 1f;
+
+    [SerializeField] private CharacterController _cc;
+    [SerializeField] private Transform _targetTransform;
+    [SerializeField] private float _teleportationTimer = 1f;
     
-    private void OnTriggerEnter(Collider _col)
+    private void OnTriggerEnter(Collider col)
     {
-        if (_col.gameObject.CompareTag("Player") && canTeleport)
+        if (col.gameObject.CompareTag("Player") && canTeleport)
         {
-            cc.enabled = false;
-            cc.gameObject.transform.localPosition = targetTransform.localPosition;
-            //cc.gameObject.transform.localRotation = targetTransform.localRotation;
+            _cc.enabled = false;
+            _cc.gameObject.transform.localPosition = _targetTransform.localPosition;
             canTeleport = false;
-            StartCoroutine(PauseBetweenTeleportations(teleportationTimer));
-            cc.enabled = true;
+            StartCoroutine(PauseBetweenTeleportations(_teleportationTimer));
+            _cc.enabled = true;
         }
     }
 

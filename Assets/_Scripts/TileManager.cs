@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] groundTiles;
+    [SerializeField] private GameObject[] _groundTiles;
 
-    private GameObject currentTile;
+    private GameObject _currentTile;
 
-    private Vector3 nextSpawnPoint;
+    public void SpawnTile()
+    {
+        _currentTile.SetActive(false);
+        _currentTile = _groundTiles[Random.Range(0, _groundTiles.Length)];
+        _currentTile.SetActive(true);
+    }
 
     private void Start()
     {
-        currentTile = groundTiles[Random.Range(0, groundTiles.Length)];
-        currentTile.SetActive(true);
+        _currentTile = _groundTiles[Random.Range(0, _groundTiles.Length)];
+        _currentTile.SetActive(true);
     }
 
     private void Update()
@@ -19,19 +24,4 @@ public class TileManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) 
             SpawnTile();
     }
-
-    private void SpawnTile(int tileIndex)
-    {
-        GameObject temp = Instantiate(groundTiles[tileIndex], nextSpawnPoint, Quaternion.identity);
-        nextSpawnPoint = temp.transform.GetChild(0).transform.position;
-    }
-
-    public void SpawnTile()
-    {
-        currentTile.SetActive(false);
-        currentTile = groundTiles[Random.Range(0, groundTiles.Length)];
-        currentTile.SetActive(true);
-    }
-
-
 }
