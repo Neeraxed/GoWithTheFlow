@@ -11032,7 +11032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: playerSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: _playerSpeed
@@ -11048,11 +11048,11 @@ PrefabInstance:
       objectReference: {fileID: 488939773}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: maximumPlayerSpeed
-      value: 11
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: _maximumPlayerSpeed
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: playerSpeedIncreaseRate
@@ -11064,7 +11064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374354, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: pointToCollectActivationRadius
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374361, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: m_RootOrder

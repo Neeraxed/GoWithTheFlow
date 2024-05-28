@@ -1214,11 +1214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: playerSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: _playerSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: inputManager
@@ -1234,15 +1234,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: maximumPlayerSpeed
-      value: 11
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: _maximumPlayerSpeed
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: playerSpeedIncreaseRate
-      value: 0.01
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1464374285812374309, guid: 64931b812fb25f948ba54aba2a3a237c, type: 3}
       propertyPath: _playerSpeedIncreaseRate
