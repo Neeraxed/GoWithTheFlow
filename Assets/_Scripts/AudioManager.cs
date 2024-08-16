@@ -4,18 +4,18 @@ public class AudioManager : MonoBehaviour
 {
     public static bool IsSoundOff;
 
-    [SerializeField] private AudioSource _backgroundSoundtrack;
-    [SerializeField] private AudioSource _clickSound;
+    [SerializeField] private AudioSource backgroundSoundtrack;
+    [SerializeField] private AudioSource clickSound;
 
     public void PlaySound(string soundName)
     {
         switch (soundName)
         {
             case "Click":
-                _clickSound.Play();
+                clickSound.Play();
                 break;
             case "Background":
-                _backgroundSoundtrack.Play();
+                backgroundSoundtrack.Play();
                 break;
         }
     }

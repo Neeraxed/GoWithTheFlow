@@ -1,26 +1,24 @@
-using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _playerSpeed = 7f;
-    [SerializeField] private float _maximumPlayerSpeed;
-    [SerializeField] private float _playerSpeedIncreaseRate;
-    [SerializeField] private InputManager _inputManager;
+    [SerializeField] private float playerSpeed = 7f;
+    [SerializeField] private float maximumPlayerSpeed;
+    [SerializeField] private float playerSpeedIncreaseRate;
 
-    private Vector3 _positiveRotation = new Vector3(0, 90, 0);
-    private Vector3 _negativeRotation = new Vector3(0, -90, 0);
+    private Vector3 positiveRotation = new Vector3(0, 90, 0);
+    private Vector3 negativeRotation = new Vector3(0, -90, 0);
     private CharacterController cc;
 
     public void Rotate(Vector2 screenPosition, float time)
     {
         if (screenPosition.x > Screen.width * 0.67)
         {
-            transform.Rotate(_positiveRotation);
+            transform.Rotate(positiveRotation);
         }
         else if (screenPosition.x < Screen.width * 0.33)
         {
-            transform.Rotate(_negativeRotation);
+            transform.Rotate(negativeRotation);
         }
     }
 
@@ -28,11 +26,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (positiveRot)
         {
-            transform.Rotate(_positiveRotation);
+            transform.Rotate(positiveRotation);
         }
         else
         {
-            transform.Rotate(_negativeRotation);
+            transform.Rotate(negativeRotation);
         }
 
     }
@@ -45,18 +43,18 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Physics.SyncTransforms();
-        cc.Move(transform.forward * _playerSpeed * Time.deltaTime);
-        if (_playerSpeed < _maximumPlayerSpeed)
+        cc.Move(transform.forward * playerSpeed * Time.deltaTime);
+        if (playerSpeed < maximumPlayerSpeed)
         {
-            _playerSpeed += Time.deltaTime * _playerSpeedIncreaseRate;
+            playerSpeed += Time.deltaTime * playerSpeedIncreaseRate;
         }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            transform.Rotate(_negativeRotation);
-        else if (Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow))
-            transform.Rotate(_positiveRotation);
+            transform.Rotate(negativeRotation);
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            transform.Rotate(positiveRotation);
     }
 }
