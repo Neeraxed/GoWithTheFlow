@@ -5,17 +5,17 @@ public class CollectableMan : MonoBehaviour
 {
     public static event Action CollectedAmountChanged;
 
-    [SerializeField] private float _pointToCollectActivationRadius = 3f;
+    [SerializeField] private float pointToCollectActivationRadius = 3f;
 
-    private Collider[] _pointToCollectCollidersBuffer = new Collider[1];
+    private Collider[] pointToCollectCollidersBuffer = new Collider[1];
     
     public void DetectPointToCollect()
     {
-        var hits = Physics.OverlapSphereNonAlloc(this.transform.position, _pointToCollectActivationRadius, _pointToCollectCollidersBuffer, 1 << PointToCollect.PointToCollectLayer);
+        var hits = Physics.OverlapSphereNonAlloc(this.transform.position, pointToCollectActivationRadius, pointToCollectCollidersBuffer, 1 << PointToCollect.PointToCollectLayer);
 
         if (hits > 0)
         {
-            var pointToCollect = _pointToCollectCollidersBuffer[0].GetComponent<PointToCollect>();
+            var pointToCollect = pointToCollectCollidersBuffer[0].GetComponent<PointToCollect>();
             pointToCollect.Collect(ref GameManager.CollectedAmount);
             CollectedAmountChanged?.Invoke();
         }

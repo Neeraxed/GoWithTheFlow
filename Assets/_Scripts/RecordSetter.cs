@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class RecordSetter : MonoBehaviour
 {
-    [SerializeField] private Text _highScore;
+    [SerializeField] private Text highScore;
 
     private void Awake()
     {
-        _highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 }

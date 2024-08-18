@@ -4,25 +4,25 @@ using Random = UnityEngine.Random;
 
 public class InfiniteTileManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _tiles;
-    [SerializeField] private GameObject _startTile;
-    [SerializeField] private PlayerBehaviour _playerBehaviour;
-    [SerializeField] private int _startingTileCount;
+    [SerializeField] private GameObject[] tiles;
+    [SerializeField] private GameObject startTile;
+    [SerializeField] private PlayerBehaviour playerBehaviour;
+    [SerializeField] private int startingTileCount;
 
-    private Vector3 _currentTileLocation = Vector3.zero;
-    private GameObject _prevTile;
-    private Queue<GameObject> _existingTiles = new Queue<GameObject>();
+    private Vector3 currentTileLocation = Vector3.zero;
+    private GameObject prevTile;
+    private Queue<GameObject> existingTiles = new Queue<GameObject>();
 
     private void OnEnable()
     {
-        _playerBehaviour.ReachedTileEnd.AddListener(DeleteTile);
-        _playerBehaviour.ReachedTileEnd.AddListener(SpawnTile);
+        playerBehaviour.ReachedTileEnd.AddListener(DeleteTile);
+        playerBehaviour.ReachedTileEnd.AddListener(SpawnTile);
     }
 
     private void OnDisable()
     {
-        _playerBehaviour.ReachedTileEnd.RemoveListener(DeleteTile);
-        _playerBehaviour.ReachedTileEnd.RemoveListener(SpawnTile);
+        playerBehaviour.ReachedTileEnd.RemoveListener(DeleteTile);
+        playerBehaviour.ReachedTileEnd.RemoveListener(SpawnTile);
     }
 
     private void Start()
@@ -30,7 +30,7 @@ public class InfiniteTileManager : MonoBehaviour
         Random.InitState(System.DateTime.Now.Millisecond);
         SpawnStartTile();
 
-        for (int i = 0; i < _startingTileCount; i++)
+        for (int i = 0; i < startingTileCount; i++)
         {
             SpawnTile();
         }
@@ -38,22 +38,22 @@ public class InfiniteTileManager : MonoBehaviour
 
     private void SpawnTile()
     {
-        _prevTile = Instantiate(SelectRandomGameobject(_tiles), _currentTileLocation, Quaternion.identity);
-        _existingTiles.Enqueue(_prevTile);
-        _currentTileLocation.z += _prevTile.GetComponentInChildren<Renderer>().bounds.size.z;
+        prevTile = Instantiate(SelectRandomGameobject(tiles), currentTileLocation, Quaternion.identity);
+        existingTiles.Enqueue(prevTile);
+        currentTileLocation.z += prevTile.GetComponentInChildren<Renderer>().bounds.size.z;
     }
 
     private void SpawnStartTile()
     {
-        _prevTile = Instantiate(_startTile, _currentTileLocation, Quaternion.identity);
-        _existingTiles.Enqueue(_prevTile);
-        _currentTileLocation.z += _prevTile.GetComponentInChildren<Renderer>().bounds.size.z;
+        prevTile = Instantiate(startTile, currentTileLocation, Quaternion.identity);
+        existingTiles.Enqueue(prevTile);
+        currentTileLocation.z += prevTile.GetComponentInChildren<Renderer>().bounds.size.z;
     }
 
     private void DeleteTile()
     {
-        if(_existingTiles.Count > 4)
-            Destroy(_existingTiles.Dequeue());
+        if(existingTiles.Count > 4)
+            Destroy(existingTiles.Dequeue());
     }
 
     private GameObject SelectRandomGameobject(GameObject[] gameObjects)
